@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Versão de JavaScript para a qual compilar
+    "module": "commonjs", // Módulo que será utilizado
+    "strict": true, // Habilitar verificações rigorosas
+    "esModuleInterop": true, // Permitir importações ES6
+    "skipLibCheck": true, // Ignorar verificação de tipo de arquivos de definição
+    "forceConsistentCasingInFileNames": true // Forçar uso consistente de maiúsculas/minúsculas em nomes de arquivos
+  },
+  "include": [
+    "src/**/*"
+  ], // Incluir todos os arquivos TypeScript na pasta src
+  "exclude": [
+    "node_modules"
+  ] // Excluir a pasta node_modules
+}
