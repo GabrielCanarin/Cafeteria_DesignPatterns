@@ -19,7 +19,12 @@ export class OrderHandler {
     this.orderService = orderService;
   }
 
-  takeOrder() {
+  startOrder() {
+    this.menuService.displayMenu();
+    this.takeOrder();
+  }
+
+  private takeOrder() {
     rl.question("Qual item você gostaria de pedir? ", (itemName) => {
       const item = this.menuService["menu"].find(
         (i) => i.name.toLowerCase() === itemName.toLowerCase()
@@ -27,6 +32,9 @@ export class OrderHandler {
       if (item) {
         this.orderService.placeOrder(itemName, item.price);
         this.totalAmount += item.price;
+        console.log(
+          `Valor total da compra até agora: R$${this.totalAmount.toFixed(2)}`
+        );
         this.askForMore();
       } else {
         console.log(`Item '${itemName}' não encontrado no cardápio.`);
@@ -36,20 +44,18 @@ export class OrderHandler {
   }
 
   private askForMore() {
-    rl.question(
-      "Você gostaria de pedir mais alguma coisa? (s/n) ",
-      (answer) => {
-        if (answer.toLowerCase() === "s") {
-          this.takeOrder();
-        } else {
-          this.handlePayment();
-        }
+    rl.question("Você gostaria de pedir mais algo? (s/n) ", (answer) => {
+      if (answer.toLowerCase() === "s") {
+        this.menuService.displayMenu();
+        this.takeOrder();
+      } else {
+        this.handlePayment();
       }
-    );
+    });
   }
 
   private handlePayment() {
-    console.log(`Total a pagar: R$${this.totalAmount.toFixed(2)}`);
+    console.log(`Valor total da compra: R$${this.totalAmount.toFixed(2)}`);
     rl.question(
       "Você gostaria de pagar em dinheiro ou cartão? (d/c) ",
       (paymentMethod) => {

@@ -1,7 +1,13 @@
-import { OrderSubject } from '../observers/OrderSubject';
+import { CustomerObserver } from "./../observers/CustumerObserver";
+import { OrderSubject } from "../observers/OrderSubject";
 
 export class OrderService {
   private orderSubject = new OrderSubject();
+  private customerObserver = new CustomerObserver();
+
+  constructor() {
+    this.orderSubject.addObserver(this.customerObserver);
+  }
 
   placeOrder(item: string, price: number) {
     console.log(`Pedido realizado: ${item}, Preço: R$${price.toFixed(2)}`);
