@@ -1,0 +1,91 @@
+.modalContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  z-index: 1000;
+  font-family: "Roboto";
+}
+
+.modalContainer h2 {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  color: var(--brown);
+}
+.modalContainer p {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  color: var(--black);
+}
+
+.ModalInfos {
+  display: flex;
+  gap: 1rem;
+  color: var(--black);
+}
+
+.orderList {
+  list-style: none;
+  padding: 0;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn_Remover {
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn_Remover:hover {
+  transform: scale(1.02);
+}
+
+.btn_IrParCarrinho {
+  background-color: #6acb83;
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+}
+.btn_IrParCarrinho:not(:disabled):hover {
+  background-color: #59a86d;
+  transform: scale(1.02);
+}
+.btn_Descartar {
+  background-color: #dc767d;
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn_Descartar:hover {
+  background-color: #b65e64;
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
