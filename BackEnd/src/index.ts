@@ -26,7 +26,7 @@ menuService.addItem("Bebidas", "Água", 2.0);
 menuService.addItem("Bebidas", "Refrigerante", 5.0);
 menuService.addItem("Bebidas", "Café", 12.0);
 menuService.addItem("Bebidas", "Vinho", 50.0);
-
+// menuService.removeItem("Vinho");
 // Exibe o menu completo com formatação
 const displayMenu = () => {
   console.log("--------------------------------------------------------");
