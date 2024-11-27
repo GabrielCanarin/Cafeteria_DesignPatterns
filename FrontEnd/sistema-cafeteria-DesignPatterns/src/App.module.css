@@ -1,0 +1,28 @@
+:root {
+  --background: #f6e6ca;
+  --orange: #c36c3a;
+  --black: #010101;
+  --brown: #4f2a26;
+  --ligh-brown: #6c462a;
+  --white: #f0f0f0;
+  --green: #82ff8c;
+  --red: #f9765c;
+}
+
+body {
+  background-color: var(--background);
+  font-family: "Playfair Display", serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.AppContainer {
+  padding: 4rem 8rem;
+  max-width: 1920px;
+  margin-inline: auto;
+  min-height: 100vh;
+}

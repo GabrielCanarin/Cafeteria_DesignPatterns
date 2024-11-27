@@ -1,0 +1,99 @@
+.paymentContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentContainer_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.paymentContainer_list h1 {
+  font-weight: 500;
+  padding: 1rem 6rem;
+}
+
+.paymentContainer_list ul {
+  font-weight: 500;
+  font-family: "Roboto";
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.paymentContainer_list h2 {
+  font-weight: 500;
+  font-family: "Roboto";
+  border: 3px dotted black;
+  padding: 1rem;
+}
+
+.paymentContainer_paymentForm {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.paymentContainer_buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.paymentContainer_buttons button {
+  border: none;
+  background: var(--orange);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.paymentContainer_buttons button:hover {
+  transform: scale(1.05);
+}
+
+.paymentContainer_buttons button:focus {
+  outline: 3px solid var(--brown);
+}
+.paymentContainer_finish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.paymentContainer_finish button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.paymentContainer_finish button:hover {
+  transform: scale(1.05);
+}
+
+.paymentContainer_BtnFinalizar {
+  background-color: var(--green);
+}
+
+.paymentContainer_BtnFinalizar:disabled {
+  cursor: not-allowed;
+}
+
+.paymentContainer_BtnVoltar {
+  background-color: var(--red);
+}

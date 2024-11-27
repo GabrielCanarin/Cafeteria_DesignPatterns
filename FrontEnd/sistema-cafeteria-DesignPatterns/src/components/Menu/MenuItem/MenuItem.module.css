@@ -1,0 +1,29 @@
+.menuItem_Container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuItem_line {
+  border-bottom: 3px dotted black;
+  width: 60%;
+}
+
+.menuItem_selectItem {
+  display: flex;
+  gap: 1rem;
+}
+
+.menuItem_price {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Roboto";
+}
+
+.menuItem_title {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
