@@ -16,8 +16,31 @@
 | `ItemFactory.ts`  | Removido `switch-case`; adicionado `registry pattern` com mapeamento dinâmico. |
 | `index.ts` ou main | Utilização da `ItemFactory.criarItem()` para instanciar dinamicamente.    |
 
-## Exemplo de Uso Refatorado
+## Refatorado
 
 ```ts
 const item1 = ItemFactory.criarItem("bebida", "Guaraná", 4.50);
 console.log(item1.getDetails());
+```
+
+# **Code Smell - If-Else na Seleção de Estratégia de Pagamento**
+
+## Repositório / URL
+
+> [Substituição de if-else por Registry Pattern]()
+
+## ChangeLog das Modificações
+
+| Arquivo             | Alteração                                                                 |
+|---------------------|---------------------------------------------------------------------------|
+| `OrderService.ts`   | Substituído bloco `if-else` por objeto `Record<string, PaymentStrategy>`. |
+
+
+## Refatorado
+
+```ts
+const strategies: Record<string, PaymentStrategy> = {
+  pix: new PixPayment(),
+  creditcard: new CreditCardPayment()
+};
+´´´

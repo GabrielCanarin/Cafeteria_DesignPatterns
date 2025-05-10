@@ -11,3 +11,16 @@
 ## Ferramentas Utilizadas
 
 - **Refatoração Manual + SOLID Principles** – aplicando boas práticas de design sem depender de frameworks externos.
+
+
+2. **Code Smell – Encadeamento de `if-else` na seleção de estratégia de pagamento**  
+   A lógica original da `OrderService.processOrder()` utilizava um bloco de `if-else` para determinar qual estratégia de pagamento deveria ser utilizada (`Pix` ou `Cartão de Crédito`). Esse padrão viola o princípio **Open/Closed** do SOLID, tornando a adição de novos métodos de pagamento propensa a erros e aumentando o acoplamento.
+
+## Estratégia de Refatoração
+
+- **Aplicação do Princípio Open/Closed (SOLID):**  
+  Substituímos o `if-else` por um **registro de estratégias de pagamento** usando um objeto `Record<string, PaymentStrategy>`. Isso permite a extensão de novos métodos de pagamento sem alterar a lógica interna da `processOrder()`.
+
+## Ferramentas Utilizadas
+
+- **Registry Pattern + SOLID Principles** – uso de um mapa (`Record`) para encapsular as estratégias de forma desacoplada e escalável, facilitando a manutenção e expansão do sistema de pagamentos.
