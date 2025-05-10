@@ -1,6 +1,6 @@
 ## Problemas detectados
 
-#1. **Code Smell - Switch Case na Factory**  
+# 1. **Code Smell - Switch Case na Factory**  
    A implementação original da `ItemFactory` utilizava estruturas `switch-case` para decidir qual classe instanciar com base no tipo do item. Isso violava o princípio **Open/Closed** do SOLID, dificultando a escalabilidade e a manutenção do código.
 
 ## Estratégia de Refatoração
@@ -13,7 +13,7 @@
 - **Refatoração Manual + SOLID Principles** – aplicando boas práticas de design sem depender de frameworks externos.
 
 ---
-#2. **Code Smell – Encadeamento de `if-else` na seleção de estratégia de pagamento**  
+# 2. **Code Smell – Encadeamento de `if-else` na seleção de estratégia de pagamento**  
    A lógica original da `OrderService.processOrder()` utilizava um bloco de `if-else` para determinar qual estratégia de pagamento deveria ser utilizada (`Pix` ou `Cartão de Crédito`). Esse padrão viola o princípio **Open/Closed** do SOLID, tornando a adição de novos métodos de pagamento propensa a erros e aumentando o acoplamento.
 
 ## Estratégia de Refatoração
@@ -26,7 +26,7 @@
 - **Registry Pattern + SOLID Principles** – uso de um mapa (`Record`) para encapsular as estratégias de forma desacoplada e escalável, facilitando a manutenção e expansão do sistema de pagamentos.
 
 ---
-#3. **Code Smell – Long Method / Duplicated Code no MenuService**  
+# 3. **Code Smell – Long Method / Duplicated Code no MenuService**  
    A lógica original dos métodos `getItemByName()` e `removeItem()` na classe `MenuService` utilizava o trecho de código repetido para comparar os nomes dos itens de forma insensível a maiúsculas/minúsculas.
 
 ## Estratégia de Refatoração
