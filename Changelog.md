@@ -3,7 +3,7 @@
 
 ## Repositório / URL
 
-> 
+> [Switch Case na Factory](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/82c740e39b6861a21451c41e6df90bbbbd54d285)
 
 ## ChangeLog das Modificações
 
