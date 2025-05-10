@@ -27,7 +27,7 @@ console.log(item1.getDetails());
 
 ## Repositório / URL
 
-> [Substituição de if-else por Registry Pattern]()
+> [Substituição de if-else por Registry Pattern](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/1b4a8373d1fe95c1ea985a1bf6f92d94364fa60c)
 
 ## ChangeLog das Modificações
 
