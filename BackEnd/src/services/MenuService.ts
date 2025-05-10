@@ -4,8 +4,8 @@ import { Item } from "../models/Item";
 export class MenuService {
   private menu: Item[] = [];
 
-  addItem(category: string, name: string, price: number) {
-    const item = ItemFactory.createItem(category, name, price);
+  addItem(type: string, name: string, price: number) {
+    const item = ItemFactory.criarItem(type, name, price);
     this.menu.push(item);
     console.log(`Item adicionado ao cardápio: ${item.getDetails()}`);
   }
@@ -30,7 +30,6 @@ export class MenuService {
 
   displayMenu() {
     return this.menu.map((item) => ({
-      category: item.type,
       name: item.name,
       price: item.price,
     }));

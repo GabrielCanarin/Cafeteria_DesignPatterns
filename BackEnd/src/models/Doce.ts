@@ -1,11 +1,8 @@
 import { Item } from "./Item";
 
-export class Doce extends Item {
-  constructor(type: string, name: string, price: number) {
-    super(type, name, price);
-  }
-
+export class Doce implements Item {
+  constructor(public name: string, public price: number) { }
   getDetails(): string {
-    return `Lanche: ${this.name}, Preço: R$${this.price.toFixed(2)}`;
+    return `Doce: ${this.name}, Preço: R$${this.price.toFixed(2)}`;
   }
 }

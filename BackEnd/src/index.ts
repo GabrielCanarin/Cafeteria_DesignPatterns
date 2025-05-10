@@ -14,18 +14,18 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 // Cardápio
-menuService.addItem("Salgados", "Coxinha", 5.0);
-menuService.addItem("Salgados", "Pastel", 6.0);
-menuService.addItem("Salgados", "Kibe", 4.0);
-menuService.addItem("Salgados", "Assado", 8.0);
-menuService.addItem("Doces", "Torta", 10.0);
-menuService.addItem("Doces", "Docinho", 3.0);
-menuService.addItem("Doces", "Sorvete", 8.0);
-menuService.addItem("Doces", "Croissant", 15.0);
-menuService.addItem("Bebidas", "Água", 2.0);
-menuService.addItem("Bebidas", "Refrigerante", 5.0);
-menuService.addItem("Bebidas", "Café", 12.0);
-menuService.addItem("Bebidas", "Vinho", 50.0);
+menuService.addItem("Salgado", "Coxinha", 5.0);
+menuService.addItem("Salgado", "Pastel", 6.0);
+menuService.addItem("Salgado", "Kibe", 4.0);
+menuService.addItem("Salgado", "Assado", 8.0);
+menuService.addItem("Doce", "Torta", 10.0);
+menuService.addItem("Doce", "Docinho", 3.0);
+menuService.addItem("Doce", "Sorvete", 8.0);
+menuService.addItem("Doce", "Croissant", 15.0);
+menuService.addItem("Bebida", "Água", 2.0);
+menuService.addItem("Bebida", "Refrigerante", 5.0);
+menuService.addItem("Bebida", "Café", 12.0);
+menuService.addItem("Bebida", "Vinho", 50.0);
 // menuService.removeItem("Vinho");
 // Exibe o menu completo com formatação
 const displayMenu = () => {

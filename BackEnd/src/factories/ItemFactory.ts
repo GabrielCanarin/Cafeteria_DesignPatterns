@@ -1,19 +1,20 @@
-import { Item } from "../models/Item";
 import { Bebida } from "../models/Bebida";
 import { Doce } from "../models/Doce";
 import { Salgado } from "../models/Salgado";
+import { Item } from "../models/Item";
+
+type ItemConstructor = new (name: string, price: number) => Item;
 
 export class ItemFactory {
-  static createItem(type: string, name: string, price: number): Item {
-    switch (type.toLowerCase()) {
-      case "bebidas":
-        return new Bebida(type, name, price);
-      case "doces":
-        return new Doce(type, name, price);
-      case "salgados":
-        return new Salgado(type, name, price);
-      default:
-        throw new Error("Tipo de item desconhecido");
-    }
+  private static registry: Record<string, ItemConstructor> = {
+    bebida: Bebida,
+    doce: Doce,
+    salgado: Salgado,
+  };
+
+  static criarItem(type: string, name: string, price: number): Item {
+    const ItemClass = this.registry[type.toLowerCase()];
+    if (!ItemClass) throw new Error(`Tipo de item inválido: ${type}`);
+    return new ItemClass(name, price);
   }
 }
