@@ -11,14 +11,12 @@ export class MenuService {
   }
 
   getItemByName(name: string): Item | undefined {
-    return this.menu.find(
-      (item) => item.name.toLowerCase() === name.toLowerCase()
-    );
+    return this.menu.find((item) => this.isSameItemName(item.name, name));
   }
 
   removeItem(name: string) {
-    const itemIndex = this.menu.findIndex(
-      (item) => item.name.toLowerCase() === name.toLowerCase()
+    const itemIndex = this.menu.findIndex((item) =>
+      this.isSameItemName(item.name, name)
     );
     if (itemIndex !== -1) {
       const removedItem = this.menu.splice(itemIndex, 1);
@@ -33,5 +31,9 @@ export class MenuService {
       name: item.name,
       price: item.price,
     }));
+  }
+
+  private isSameItemName(a: string, b: string): boolean {
+    return a.toLowerCase() === b.toLowerCase();
   }
 }

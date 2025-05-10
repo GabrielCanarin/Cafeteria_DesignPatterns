@@ -43,4 +43,25 @@ const strategies: Record<string, PaymentStrategy> = {
   pix: new PixPayment(),
   creditcard: new CreditCardPayment()
 };
-´´´
+```
+
+# **Code Smell - Long Method / Duplicated Code no MenuService**
+
+## Repositório / URL
+
+> [Extração de Método Privado (DRY - Don't Repeat Yourself)]()
+
+## ChangeLog das Modificações
+
+| Arquivo             | Alteração                                                                 |
+|---------------------|---------------------------------------------------------------------------|
+| `MenuService.ts`   | Extração da lógica duplicada para o método `isSameItemName()` .            |
+
+
+## Refatorado
+
+```ts
+private isSameItemName(a: string, b: string): boolean {
+  return a.toLowerCase() === b.toLowerCase();
+};
+```

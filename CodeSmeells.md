@@ -24,3 +24,16 @@
 ## Ferramentas Utilizadas
 
 - **Registry Pattern + SOLID Principles** – uso de um mapa (`Record`) para encapsular as estratégias de forma desacoplada e escalável, facilitando a manutenção e expansão do sistema de pagamentos.
+
+
+3. **Code Smell – Long Method / Duplicated Code no MenuService**  
+   A lógica original dos métodos `getItemByName()` e `removeItem()` na classe `MenuService` utilizava o trecho de código repetido para comparar os nomes dos itens de forma insensível a maiúsculas/minúsculas.
+
+## Estratégia de Refatoração
+
+- **Extração de Método Privado (DRY - Don't Repeat Yourself):**  
+  Criamos um novo método privado `isSameItemName()` para encapsular a lógica de comparação. Esse método agora é utilizado tanto em `getItemByName()` quanto em `removeItem()`, eliminando a duplicação e tornando o código mais limpo e reutilizável.
+
+## Ferramentas Utilizadas
+
+- **Princípio DRY (Don't Repeat Yourself)** - Extração da lógica duplicada para um método privado.
