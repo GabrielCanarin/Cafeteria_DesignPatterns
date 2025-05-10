@@ -49,7 +49,7 @@ const strategies: Record<string, PaymentStrategy> = {
 
 ## Repositório / URL
 
-> [Extração de Método Privado (DRY - Don't Repeat Yourself)]()
+> [Extração de Método Privado (DRY - Don't Repeat Yourself)](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/1e19e06eba4e998ee63e3daf4b95b2d9793f628b)
 
 ## ChangeLog das Modificações
 
