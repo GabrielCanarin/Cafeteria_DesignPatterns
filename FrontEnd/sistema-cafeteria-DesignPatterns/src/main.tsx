@@ -24,7 +24,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <>
+  <StrictMode>
     <ToastContainer
       position="bottom-right"
       autoClose={2000}
@@ -39,5 +39,5 @@ createRoot(document.getElementById("root")!).render(
       transition={Bounce}
     />
     <RouterProvider router={router}></RouterProvider>
-  </>
+  </StrictMode>
 );
