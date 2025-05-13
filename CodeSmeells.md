@@ -1,90 +1,102 @@
-## Problemas detectados BackEnd
+# 📌 Relatório de Problemas Detectados
 
-# 1. **Code Smell - Switch Case na Factory**
+Este documento apresenta os principais problemas de design e implementação encontrados no projeto, segmentados por camada (Back-End e Front-End). Para cada problema, foram descritos:
+
+1. O tipo de code smell ou violação de princípio identificado;
+2. A estratégia de refatoração adotada;
+3. As ferramentas ou padrões utilizados na solução.
+
+---
+
+## 🔧 Problemas Detectados — Back-End
+
+### 1. Code Smell: Uso de Switch-Case na ItemFactory
 
 A implementação original da `ItemFactory` utilizava estruturas `switch-case` para decidir qual classe instanciar com base no tipo do item. Isso violava o princípio **Open/Closed** do SOLID, dificultando a escalabilidade e a manutenção do código.
 
-## Estratégia de Refatoração
+#### Estratégia de Refatoração
 
-- **Aplicação do Princípio Open/Closed (SOLID):**  
-  Em vez de usar o `switch-case`, implementamos um **registro dinâmico** (registry pattern), permitindo que novos tipos de itens sejam criados sem modificar a lógica da `ItemFactory`.
+- Substituição do `switch-case`, implementamos um **registro dinâmico** (registry pattern), permitindo que novos tipos de itens sejam criados sem modificar a lógica da `ItemFactory`.
 
-## Ferramentas Utilizadas
+#### Ferramentas Utilizadas
 
-- **Refatoração Manual + SOLID Principles** – aplicando boas práticas de design sem depender de frameworks externos.
-
----
-
-# 2. **Code Smell – Encadeamento de `if-else` na seleção de estratégia de pagamento**
-
-A lógica original da `OrderService.processOrder()` utilizava um bloco de `if-else` para determinar qual estratégia de pagamento deveria ser utilizada (`Pix` ou `Cartão de Crédito`). Esse padrão viola o princípio **Open/Closed** do SOLID, tornando a adição de novos métodos de pagamento propensa a erros e aumentando o acoplamento.
-
-## Estratégia de Refatoração
-
-- **Aplicação do Princípio Open/Closed (SOLID):**  
-  Substituímos o `if-else` por um **registro de estratégias de pagamento** usando um objeto `Record<string, PaymentStrategy>`. Isso permite a extensão de novos métodos de pagamento sem alterar a lógica interna da `processOrder()`.
-
-## Ferramentas Utilizadas
-
-- **Registry Pattern + SOLID Principles** – uso de um mapa (`Record`) para encapsular as estratégias de forma desacoplada e escalável, facilitando a manutenção e expansão do sistema de pagamentos.
+- **Refatoração Manual + SOLID Principles**.
 
 ---
 
-# 3. **Code Smell – Long Method / Duplicated Code no MenuService**
+### 2. Code Smell: Encadeamento de if-else na seleção de estratégia de pagamento
 
-A lógica original dos métodos `getItemByName()` e `removeItem()` na classe `MenuService` utilizava o trecho de código repetido para comparar os nomes dos itens de forma insensível a maiúsculas/minúsculas.
+A classe `OrderService.processOrder()` possuía lógica condicional do tipo `if-else` para determinar o tipo de pagamento (`Pix` ou `Cartão de Crédito`), tornando o sistema rígido e pouco extensível.
 
-## Estratégia de Refatoração
 
-- **Extração de Método Privado (DRY - Don't Repeat Yourself):**  
-  Criamos um novo método privado `isSameItemName()` para encapsular a lógica de comparação. Esse método agora é utilizado tanto em `getItemByName()` quanto em `removeItem()`, eliminando a duplicação e tornando o código mais limpo e reutilizável.
+#### Estratégia de Refatoração
 
-## Ferramentas Utilizadas
+- Substituímos o `if-else` por um **registro de estratégias de pagamento** usando um objeto `Record<string, PaymentStrategy>`. Isso permite a extensão de novos métodos de pagamento sem alterar a lógica interna da `processOrder()`.
 
-- **Princípio DRY (Don't Repeat Yourself)** - Extração da lógica duplicada para um método privado.
+#### Ferramentas Utilizadas
 
-## Problemas detectados FrontEnd
+- **Registry Pattern + SOLID Principles** .
 
-# 1. **Code Smell - Lógica de Pedido Duplicada**
+---
 
-A implementação original possuía a lógica de finalização de pedido duplicada entre `PaymentPage` e `OrderContext`, com `handleFinishOrder` e `finishOrder` realizando operações similares. Isso violava o princípio Don't Repeat Yourself (DRY) e aumentava a complexidade de manutenção.
+### 3. Code Smell: Método longo e código duplicado no MenuService
 
-## Estratégia de Refatoração
+Os métodos `getItemByName()` e `removeItem()` compartilhavam a mesma lógica de comparação de nomes (case-insensitive), repetida em ambos os locais.
 
-- **Consolidação no OrderContext:**
+#### Estratégia de Refatoração
 
-Movemos toda a lógica de finalização para o `OrderContext`, expondo apenas a função `finishOrder` para os componentes. A `PaymentPage` agora apenas dispara a ação do contexto.
+- Extração da lógica repetida para um método privado chamado `isSameItemName()`.
 
-## Ferramentas Utilizadas
+#### Ferramentas Utilizadas
 
-React Context API + DRY Principle - Centralização da lógica de negócios no contexto para eliminar duplicação.
+- Princípio **DRY (Don't Repeat Yourself)**.
 
-# 2. **Code Smell - `Prop Drilling` no CartModal**
+---
 
-O componente `CartModal` recebia múltiplas props (isOpen, onClose, order, onRemoveItem) que eram repassadas através da hierarquia de componentes. Isso criava alto acoplamento e fragilidade no código.
+## 🎨 Problemas Detectados — Front-End
 
-## Estratégia de Refatoração
+### 1. Code Smell: Lógica de Pedido Duplicada
 
-- **Consolidação no OrderContext:**
+A lógica de finalização de pedido estava duplicada entre `PaymentPage` e `OrderContext`, com funções similares (`handleFinishOrder` e `finishOrder`).
 
-Refatoramos para que o `CartModal` acesse diretamente o `OrderContext`, eliminando a necessidade de `prop drilling`. Os estados e ações são gerenciados internamente pelo contexto.
+#### Estratégia de Refatoração
 
-## Ferramentas Utilizadas
+- Movemos toda a lógica de finalização para o `OrderContext`, expondo apenas a função `finishOrder` para os componentes. A `PaymentPage` agora apenas dispara a ação do contexto.
 
-React Context API + Inversão de Controle - Uso do contexto para fornecer dados e comportamentos aos componentes filhos.
+#### Ferramentas Utilizadas
 
-# 3. **Code Smell - Lógica de Negócio no Componente**
+- **React Context API + Princípio DRY**.
 
-O cálculo do total do pedido `(order.reduce(...))` estava implementado diretamente no componente `PaymentPage`, misturando lógica de apresentação com regras de negócio.
+---
 
-## Estratégia de Refatoração
+### 2. Code Smell: Prop Drilling no CartModal
 
-- **Extração para o OrderContext:**
+O componente `CartModal` recebia diversas props (`isOpen`, `onClose`, `order`, `onRemoveItem`), criando acoplamento excessivo.
 
-Criamos a função utilitária `getOrderTotal()` no contexto, que pode ser reutilizada por qualquer componente que precise do valor total, seguindo o princípio `Single Source of Truth`.
+#### Estratégia de Refatoração
 
-## Ferramentas Utilizadas
+- Refatoramos para que o `CartModal` acesse diretamente o `OrderContext`, eliminando a necessidade de `prop drilling`. Os estados e ações são gerenciados internamente pelo contexto.
 
-Custom Hook + SOLID Principles - Isolamento da lógica de negócio em hooks/contexto para melhor reuso e manutenção.
+#### Ferramentas Utilizadas
 
-Padrão Comum: Todas as refatorações aplicam princípios SOLID (especialmente Single Responsibility e Open/Closed) e DRY, movendo a lógica de negócio para camadas mais adequadas (contexto/hooks) e reduzindo o acoplamento entre componentes.
+- **React Context API + Inversão de Controle**.
+
+---
+
+### 3. Code Smell: Lógica de Negócio no Componente de Interface
+
+O cálculo do total do pedido estava sendo feito diretamente no componente `PaymentPage` (via `order.reduce(...)`), misturando lógica de negócio com apresentação.
+
+#### Estratégia de Refatoração
+
+- Criamos a função utilitária `getOrderTotal()` no contexto, que pode ser reutilizada por qualquer componente que precise do valor total, seguindo o princípio `Single Source of Truth`.
+
+#### Ferramentas Utilizadas
+
+- **Custom Hook + Princípios SOLID** (Single Responsibility e Separation of Concerns).
+
+---
+
+### ❗ Ponto de Atenção: Inconsistência no uso de Idioma em Variáveis
+
+Foi detectado um problema de clean code relacionado ao uso misto de idiomas em nomes de variáveis (inglês e português). Unificamos a linguagem utilizada no código, preferencialmente optando por nomes em inglês, para melhorar a clareza, padronização e leitura do código.
