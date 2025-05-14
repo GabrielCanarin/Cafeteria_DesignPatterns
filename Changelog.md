@@ -67,7 +67,7 @@ private isSameItemName(a: string, b: string): boolean {
 
 ## Repositório / URL
 
-> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/1e19e06eba4e998ee63e3daf4b95b2d9793f628b)
+> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/83dba8c123581eb0917abe954a2f5497af6634ed)
 
 ## ChangeLog das Modificações
 
