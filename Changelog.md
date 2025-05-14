@@ -1,4 +1,3 @@
-
 # **Code Smell - Switch Case na Factory**
 
 ## Repositório / URL
@@ -7,19 +6,19 @@
 
 ## ChangeLog das Modificações
 
-| Arquivo           | Alteração                                                                 |
-|-------------------|---------------------------------------------------------------------------|
-| `Item.ts`         | Substituído `class Item` por `interface Item`, removendo lógica genérica. |
-| `Bebida.ts`       | Criada classe `Bebida` implementando `Item` com lógica específica.        |
-| `Doce.ts`         | Criada classe `Doce` implementando `Item` com lógica específica.          |
-| `Salgado.ts`      | Criada classe `Salgado` implementando `Item` com lógica específica.       |
-| `ItemFactory.ts`  | Removido `switch-case`; adicionado `registry pattern` com mapeamento dinâmico. |
-| `index.ts` ou main | Utilização da `ItemFactory.criarItem()` para instanciar dinamicamente.    |
+| Arquivo            | Alteração                                                                      |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `Item.ts`          | Substituído `class Item` por `interface Item`, removendo lógica genérica.      |
+| `Bebida.ts`        | Criada classe `Bebida` implementando `Item` com lógica específica.             |
+| `Doce.ts`          | Criada classe `Doce` implementando `Item` com lógica específica.               |
+| `Salgado.ts`       | Criada classe `Salgado` implementando `Item` com lógica específica.            |
+| `ItemFactory.ts`   | Removido `switch-case`; adicionado `registry pattern` com mapeamento dinâmico. |
+| `index.ts` ou main | Utilização da `ItemFactory.criarItem()` para instanciar dinamicamente.         |
 
 ## Refatorado
 
 ```ts
-const item1 = ItemFactory.criarItem("bebida", "Guaraná", 4.50);
+const item1 = ItemFactory.criarItem("bebida", "Guaraná", 4.5);
 console.log(item1.getDetails());
 ```
 
@@ -31,17 +30,16 @@ console.log(item1.getDetails());
 
 ## ChangeLog das Modificações
 
-| Arquivo             | Alteração                                                                 |
-|---------------------|---------------------------------------------------------------------------|
-| `OrderService.ts`   | Substituído bloco `if-else` por objeto `Record<string, PaymentStrategy>`. |
-
+| Arquivo           | Alteração                                                                 |
+| ----------------- | ------------------------------------------------------------------------- |
+| `OrderService.ts` | Substituído bloco `if-else` por objeto `Record<string, PaymentStrategy>`. |
 
 ## Refatorado
 
 ```ts
 const strategies: Record<string, PaymentStrategy> = {
   pix: new PixPayment(),
-  creditcard: new CreditCardPayment()
+  creditcard: new CreditCardPayment(),
 };
 ```
 
@@ -53,15 +51,36 @@ const strategies: Record<string, PaymentStrategy> = {
 
 ## ChangeLog das Modificações
 
-| Arquivo             | Alteração                                                                 |
-|---------------------|---------------------------------------------------------------------------|
-| `MenuService.ts`   | Extração da lógica duplicada para o método `isSameItemName()` .            |
-
+| Arquivo          | Alteração                                                       |
+| ---------------- | --------------------------------------------------------------- |
+| `MenuService.ts` | Extração da lógica duplicada para o método `isSameItemName()` . |
 
 ## Refatorado
 
 ```ts
 private isSameItemName(a: string, b: string): boolean {
   return a.toLowerCase() === b.toLowerCase();
+};
+```
+
+# **Code Smell - Lógica de Negócio no Componente de Interface**
+
+## Repositório / URL
+
+> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/1e19e06eba4e998ee63e3daf4b95b2d9793f628b)
+
+## ChangeLog das Modificações
+
+| Arquivo            | Alteração                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `OrderContext.tsx` | Adição do função `getOrderTotal` que retorna o valor total do pedido                        |
+| `PaymentPage.tsx`  | Remoção do cálculo Total que era feito nesse componente e colocado a função `getOrderTotal` |
+
+## Refatorado
+
+```ts
+const getOrderTotal = () => {
+  const orderTotal = order.reduce((total, item) => total + item.price, 0);
+  return orderTotal;
 };
 ```

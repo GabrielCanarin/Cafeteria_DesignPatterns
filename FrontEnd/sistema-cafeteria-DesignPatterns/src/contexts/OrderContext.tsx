@@ -17,6 +17,7 @@ interface OrderContextProps {
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   startOrder: () => Promise<void>;
   finishOrder: (paymentType: "creditCard" | "pix") => Promise<void>;
+  getOrderTotal: () => number;
 }
 
 const OrderContext = createContext<OrderContextProps | undefined>(undefined);
@@ -62,6 +63,11 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
     setSelectedItems({});
   };
 
+  const getOrderTotal = () => {
+    const orderTotal = order.reduce((total, item) => total + item.price, 0);
+    return orderTotal;
+  };
+
   // Finaliza o pedido
   const finishOrder = async (paymentType: "creditCard" | "pix") => {
     try {
@@ -88,6 +94,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         setIsCartOpen,
         startOrder,
         finishOrder, // Aqui não há mudanças, pois já está correto
+        getOrderTotal,
       }}
     >
       {children}

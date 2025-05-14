@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 export const PaymentPage = () => {
-  const { order, clearOrder } = useOrder();
+  const { order, clearOrder, getOrderTotal } = useOrder();
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
 
   const handlePaymentChoice = (method: string) => {
@@ -40,9 +40,6 @@ export const PaymentPage = () => {
     }
   };
 
-  // Calcula o total do pedido
-  const total = order.reduce((acc, item) => acc + item.price, 0);
-
   return (
     <>
       <Logo />
@@ -56,7 +53,7 @@ export const PaymentPage = () => {
               </li>
             ))}
           </ul>
-          <h2>Total: R$ {total.toFixed(2)}</h2>
+          <h2>Total: R$ {getOrderTotal()}</h2>
         </div>
         <div className={styles.paymentContainer_paymentForm}>
           <h2>Escolha a forma de Pagamento:</h2>
