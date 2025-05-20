@@ -84,3 +84,44 @@ const getOrderTotal = () => {
   return orderTotal;
 };
 ```
+
+
+
+
+
+
+# **Adição de Nova Funcionalidade - Interface Fluente para Combos**
+
+## Repositório / URL
+
+> [Implementação de Interface Fluente para Combos]()
+
+## ChangeLog das Modificações
+
+| Arquivo             | Alteração                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| `Combo.ts`          | Criada nova classe implementando `Item` para representar combos com descontos.      |
+| `ComboBuilder.ts`   | Implementado builder com interface fluente para construção expressiva de combos.    |
+| `ComboService.ts`   | Criado serviço para gerenciamento e registro de combos promocionais.               |
+
+## Principais Recursos Implementados
+
+- Interface Fluente para criação expressiva de combos
+- Cálculo automático de preço com desconto
+- Validação de itens existentes e valores de desconto
+- Suporte a criação de combos promocionais predefinidos
+
+## Exemplo de Uso
+
+```ts
+// Criação de combo com interface fluente
+const cafeDaManha = comboService.createCombo("Café da Manhã")
+  .withItem("Café")
+  .withItem("Croissant")
+  .withDiscount(15)
+  .build();
+
+// Registro do combo no sistema
+comboService.registerCombo(cafeDaManha);
+```
+

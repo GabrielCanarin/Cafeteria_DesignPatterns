@@ -3,12 +3,14 @@ import cors from "cors";
 import { MenuService } from "./services/MenuService";
 import { OrderService } from "./services/OrderService";
 import { OrderHandler } from "./services/OrderHandler";
+import { ComboService } from "./services/ComboService";
 
 const app = express();
 const port = 3000;
 const menuService = new MenuService();
 const orderService = new OrderService();
 const orderHandler = new OrderHandler(menuService, orderService);
+const comboService = new ComboService(menuService);
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
@@ -27,6 +29,30 @@ menuService.addItem("Bebida", "Refrigerante", 5.0);
 menuService.addItem("Bebida", "Café", 12.0);
 menuService.addItem("Bebida", "Vinho", 50.0);
 // menuService.removeItem("Vinho");
+
+
+// Combos
+const cafeDaManha = comboService.createCombo("Café da Manhã")
+  .withItem("Café")
+  .withItem("Croissant")
+  .withDiscount(15)
+  .build();
+
+const lancheDaTarde = comboService.createCombo("Lanche da Tarde")
+  .withItems(["Refrigerante", "Coxinha", "Docinho"])
+  .withDiscount(10)
+  .build();
+
+// Registrar os combos no sistema
+comboService.registerCombo(cafeDaManha);
+comboService.registerCombo(lancheDaTarde);
+
+// Adicionar uma rota para listar os combos
+app.get("/combos", (req, res) => {
+  res.json(comboService.displayCombos());
+});
+
+
 // Exibe o menu completo com formatação
 const displayMenu = () => {
   console.log("--------------------------------------------------------");
