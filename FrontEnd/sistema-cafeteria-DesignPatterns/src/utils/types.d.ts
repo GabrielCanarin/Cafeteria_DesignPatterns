@@ -1,6 +1,6 @@
 export interface IItemMenu {
   name: string;
   price: number;
-  category: string;
+  type: string;
   quantity?: number;
 }

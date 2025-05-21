@@ -51,9 +51,9 @@ export const Menu = () => {
   };
 
   // Agrupar itens por categoria
-  const categories = [...new Set(menuItems.map((item) => item.category))];
-  const groupedItems = categories.reduce((acc, category) => {
-    acc[category] = menuItems.filter((item) => item.category === category);
+  const categories = [...new Set(menuItems.map((item) => item.type))];
+  const groupedItems = categories.reduce((acc, type) => {
+    acc[type] = menuItems.filter((item) => item.type === type);
     return acc;
   }, {} as Record<string, IItemMenu[]>);
 
