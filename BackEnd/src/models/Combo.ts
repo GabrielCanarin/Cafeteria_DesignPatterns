@@ -1,10 +1,11 @@
 import { Item } from "./Item";
 
 export class Combo implements Item {
+  public readonly type = "Combo";
   private items: Item[] = [];
   private discountPercentage: number = 0;
 
-  constructor(public name: string, public price: number = 0) {}
+  constructor(public name: string, public price: number = 0) { }
 
   addItem(item: Item): void {
     this.items.push(item);

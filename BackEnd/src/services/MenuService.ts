@@ -28,6 +28,7 @@ export class MenuService {
 
   displayMenu() {
     return this.menu.map((item) => ({
+      type: item.type,
       name: item.name,
       price: item.price,
     }));
