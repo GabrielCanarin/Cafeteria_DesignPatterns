@@ -43,11 +43,9 @@ const lancheDaTarde = comboService.createCombo("Lanche da Tarde")
   .withDiscount(10)
   .build();
 
-// Registrar os combos no sistema
 comboService.registerCombo(cafeDaManha);
 comboService.registerCombo(lancheDaTarde);
 
-// Adicionar uma rota para listar os combos
 app.get("/combos", (req, res) => {
   res.json(comboService.displayCombos());
 });
