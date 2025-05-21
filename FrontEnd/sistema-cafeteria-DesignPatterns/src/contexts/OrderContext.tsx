@@ -93,7 +93,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
         isCartOpen,
         setIsCartOpen,
         startOrder,
-        finishOrder, // Aqui não há mudanças, pois já está correto
+        finishOrder,
         getOrderTotal,
       }}
     >

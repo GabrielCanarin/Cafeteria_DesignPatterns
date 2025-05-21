@@ -10,20 +10,16 @@ import { useOrder } from "../../contexts/OrderContext";
 
 export const Menu = () => {
   const [menuItems, setMenuItems] = useState<IItemMenu[]>([]);
-
   const {
     order,
-    setOrder,
     addItem,
     removeItem,
     selectedItems,
     setSelectedItems,
-    isCartOpen,
     setIsCartOpen,
     startOrder,
   } = useOrder();
 
-  // Trazer Menu
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -37,18 +33,14 @@ export const Menu = () => {
     fetchMenuItems();
   }, []);
 
-  // Adicionar
-  const handleAddItem = (item: IItemMenu, isSelected: boolean) => {
-    setSelectedItems((prevSelectedItems) => ({
-      ...prevSelectedItems,
-      [item.name]: isSelected,
-    }));
+  const handleAddItem = async (item: IItemMenu, isSelected: boolean) => {
+    setSelectedItems((prev) => ({ ...prev, [item.name]: isSelected }));
 
     if (isSelected) {
       if (order.length === 0) {
-        startOrder();
+        await startOrder();
       }
-      addItem(item);
+      await addItem(item);
       toast.success(`${item.name} adicionado ao pedido.`);
     } else {
       removeItem(item.name);
@@ -58,19 +50,8 @@ export const Menu = () => {
     setIsCartOpen(true);
   };
 
-  const handleDiscardOrder = () => {
-    setIsCartOpen(false);
-    setSelectedItems({});
-    setOrder([]);
-    toast.info("Pedido Finalizado");
-  };
-
-  // Gera as categorias
-  const categories = Array.from(
-    new Set(menuItems.map((item) => item.category))
-  );
-
-  // Agrupa os itens do menu por categoria
+  // Agrupar itens por categoria
+  const categories = [...new Set(menuItems.map((item) => item.category))];
   const groupedItems = categories.reduce((acc, category) => {
     acc[category] = menuItems.filter((item) => item.category === category);
     return acc;
@@ -92,12 +73,7 @@ export const Menu = () => {
         </div>
       ))}
 
-      <CartModal
-        isOpen={isCartOpen}
-        onClose={handleDiscardOrder}
-        order={order}
-        onRemoveItem={(itemName) => removeItem(itemName)}
-      />
+      <CartModal />
     </section>
   );
 };
