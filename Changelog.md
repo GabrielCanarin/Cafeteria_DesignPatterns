@@ -63,6 +63,32 @@ private isSameItemName(a: string, b: string): boolean {
 };
 ```
 
+# **Code Smell: Prop Drilling no CartModal**
+
+## Repositório / URL
+
+> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/2f19c8d43d9778cd3a520f4cda2f2af37e279226)
+
+## ChangeLog das Modificações
+
+| Arquivo            | Alteração                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `CartModal.tsx` | Remoção da interface `ICartModalProps` e adição da constante que recebe os valores desestruturados do contexto `useOrder()`.                        |
+| `Menu.tsx`  | Remoção das props de `<CartModal/>`. |
+
+## Refatorado
+
+```ts
+const {
+    order,
+    isCartOpen,
+    removeItem,
+    clearOrder,
+    getOrderTotal,
+    setIsCartOpen,
+  } = useOrder();
+```
+
 # **Code Smell - Lógica de Negócio no Componente de Interface**
 
 ## Repositório / URL
@@ -84,9 +110,6 @@ const getOrderTotal = () => {
   return orderTotal;
 };
 ```
-
-
-
 
 
 

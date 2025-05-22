@@ -71,9 +71,16 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
   // Finaliza o pedido
   const finishOrder = async (paymentType: "creditCard" | "pix") => {
     try {
-      await Api.post("/order/finish", { paymentType });
-      setOrder([]); // Limpa o estado local
-      toast.success("Pedido finalizado com sucesso.");
+      const total = order.reduce((acc, item) => acc + item.price, 0);
+      const response = await Api.post("/order/finish", { paymentType });
+
+      toast.success(
+        `Pedido finalizado com sucesso. Total: R$ ${total.toFixed(
+          2
+        )}. Tipo de pagamento: ${response.data.paymentType}`
+      );
+
+      setOrder([]);
     } catch (error) {
       console.error("Erro ao finalizar pedido:", error);
       toast.error("Erro ao finalizar pedido.");
