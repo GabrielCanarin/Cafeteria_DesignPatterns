@@ -67,7 +67,7 @@ private isSameItemName(a: string, b: string): boolean {
 
 ## Repositório / URL
 
-> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/be1d88fa3fe0addb6c89de6ec612bfbefcfe4a0f)
+> [Remoção da Lógica de finalizar pedido do componente visual `PaymentPage.tsx`](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/be1d88fa3fe0addb6c89de6ec612bfbefcfe4a0f)
 
 ## ChangeLog das Modificações
 
@@ -91,7 +91,7 @@ private isSameItemName(a: string, b: string): boolean {
 
 ## Repositório / URL
 
-> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/2f19c8d43d9778cd3a520f4cda2f2af37e279226)
+> [Remoção das props no componente CartModel.tsx evitando Prop Drilling, usando o Context.](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/2f19c8d43d9778cd3a520f4cda2f2af37e279226)
 
 ## ChangeLog das Modificações
 
