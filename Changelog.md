@@ -63,6 +63,30 @@ private isSameItemName(a: string, b: string): boolean {
 };
 ```
 
+# **Code Smell: Lógica de Pedido Duplicada**
+
+## Repositório / URL
+
+> [Extração de lógica de cálculo do total do pedido para utilitário getOrderTotal()](https://github.com/GabrielCanarin/Cafeteria_DesignPatterns/commit/be1d88fa3fe0addb6c89de6ec612bfbefcfe4a0f)
+
+## ChangeLog das Modificações
+
+| Arquivo            | Alteração                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `OrderContext.tsx` | Adição da lógica de finalizar pedido no contexto em `finishOrder`.  |
+| `PaymentPage.tsx`  | Remoção da Lógica de finzalição do pedido, chamando apenas a função do contexto em `finishOrder(paymentType)`. |
+
+## Refatorado
+
+```ts
+  const { order, getOrderTotal, finishOrder } = useOrder();
+
+  const handleFinishOrder = () => {
+    const paymentType = paymentMethod === "Pix" ? "pix" : "creditCard";
+    finishOrder(paymentType);
+  };
+```
+
 # **Code Smell: Prop Drilling no CartModal**
 
 ## Repositório / URL
@@ -73,7 +97,7 @@ private isSameItemName(a: string, b: string): boolean {
 
 | Arquivo            | Alteração                                                                                   |
 | ------------------ | ------------------------------------------------------------------------------------------- |
-| `CartModal.tsx` | Remoção da interface `ICartModalProps` e adição da constante que recebe os valores desestruturados do contexto `useOrder()`.                        |
+| `CartModal.tsx` | Remoção da interface `ICartModalProps` e adição da constante que recebe os valores desestruturados do contexto `useOrder()`.  |
 | `Menu.tsx`  | Remoção das props de `<CartModal/>`. |
 
 ## Refatorado
