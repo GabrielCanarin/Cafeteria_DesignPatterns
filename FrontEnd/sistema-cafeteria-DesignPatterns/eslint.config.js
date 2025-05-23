@@ -7,11 +7,17 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   { ignores: ["dist"] },
   {
+    // Configuração para arquivos React (TSX)
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     plugins: {
       "react-hooks": reactHooks,
@@ -24,6 +30,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "@typescript-eslint/no-explicit-any": "off",
+      "react/react-in-jsx-scope": "off", // Adicionado
     },
   }
 );

@@ -12,7 +12,7 @@ export class ItemFactory {
     salgado: Salgado,
   };
 
-  static criarItem(type: string, name: string, price: number): Item {
+  static createItem(type: string, name: string, price: number): Item {
     const ItemClass = this.registry[type.toLowerCase()];
     if (!ItemClass) throw new Error(`Tipo de item inválido: ${type}`);
     return new ItemClass(name, price);

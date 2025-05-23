@@ -5,7 +5,7 @@ export class Combo implements Item {
   private items: Item[] = [];
   private discountPercentage: number = 0;
 
-  constructor(public name: string, public price: number = 0) { }
+  constructor(public name: string, public price: number = 0) {}
 
   addItem(item: Item): void {
     this.items.push(item);
@@ -35,8 +35,12 @@ export class Combo implements Item {
   }
 
   getDetails(): string {
-    const itemsList = this.items.map(item => item.name).join(", ");
+    const itemsList = this.items.map((item) => item.name).join(", ");
     const originalPrice = this.getOriginalPrice().toFixed(2);
-    return `Combo: ${this.name}, Itens: [${itemsList}], Preço Original: R$${originalPrice}, Desconto: ${this.discountPercentage}%, Preço Final: R$${this.price.toFixed(2)}`;
+    return `Combo: ${
+      this.name
+    }, Itens: [${itemsList}], Preço Original: R$${originalPrice}, Desconto: ${
+      this.discountPercentage
+    }%, Preço Final: R$${this.price.toFixed(2)}`;
   }
 }

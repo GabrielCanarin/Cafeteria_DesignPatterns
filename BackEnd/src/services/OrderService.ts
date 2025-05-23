@@ -34,7 +34,11 @@ export class OrderService extends OrderSubject {
     strategy.pay(total);
 
     this.notifyObservers(
-      `Pedido finalizado. Total: R$ ${total.toFixed(2)}. Pagamento processado com ${paymentType === "pix" ? "Pix" : "Cartão de Crédito"}.`
+      `Pedido finalizado. Total: R$ ${total.toFixed(
+        2
+      )}. Pagamento processado com ${
+        paymentType === "pix" ? "Pix" : "Cartão de Crédito"
+      }.`
     );
 
     this.currentOrder = [];

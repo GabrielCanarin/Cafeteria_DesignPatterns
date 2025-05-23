@@ -19,12 +19,16 @@ export class ComboService {
     console.log(`Combo registrado: ${combo.getDetails()}`);
   }
 
-  createPromotionalCombo(name: string, itemNames: string[], discountPercentage: number): Combo {
+  createPromotionalCombo(
+    name: string,
+    itemNames: string[],
+    discountPercentage: number
+  ): Combo {
     const combo = this.createCombo(name)
       .withItems(itemNames)
       .withDiscount(discountPercentage)
       .build();
-    
+
     this.registerCombo(combo);
     return combo;
   }
@@ -34,17 +38,22 @@ export class ComboService {
   }
 
   getComboByName(name: string): Combo | undefined {
-    return this.combos.find(combo => 
-      combo.name.toLowerCase() === name.toLowerCase()
+    return this.combos.find(
+      (combo) => combo.name.toLowerCase() === name.toLowerCase()
     );
   }
 
-  displayCombos(): Array<{name: string, price: number, originalPrice: number, discount: number}> {
-    return this.combos.map(combo => ({
+  displayCombos(): Array<{
+    name: string;
+    price: number;
+    originalPrice: number;
+    discount: number;
+  }> {
+    return this.combos.map((combo) => ({
       name: combo.name,
       price: combo.price,
       originalPrice: combo.getOriginalPrice(),
-      discount: combo.getDiscount()
+      discount: combo.getDiscount(),
     }));
   }
 }

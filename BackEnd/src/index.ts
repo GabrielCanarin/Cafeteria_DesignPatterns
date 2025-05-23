@@ -30,15 +30,16 @@ menuService.addItem("Bebida", "Café", 12.0);
 menuService.addItem("Bebida", "Vinho", 50.0);
 // menuService.removeItem("Vinho");
 
-
 // Combos
-const cafeDaManha = comboService.createCombo("Café da Manhã")
+const cafeDaManha = comboService
+  .createCombo("Café da Manhã")
   .withItem("Café")
   .withItem("Croissant")
   .withDiscount(15)
   .build();
 
-const lancheDaTarde = comboService.createCombo("Lanche da Tarde")
+const lancheDaTarde = comboService
+  .createCombo("Lanche da Tarde")
   .withItems(["Refrigerante", "Coxinha", "Docinho"])
   .withDiscount(10)
   .build();
@@ -49,7 +50,6 @@ comboService.registerCombo(lancheDaTarde);
 app.get("/combos", (req, res) => {
   res.json(comboService.displayCombos());
 });
-
 
 // Exibe o menu completo com formatação
 const displayMenu = () => {

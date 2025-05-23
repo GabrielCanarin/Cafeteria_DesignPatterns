@@ -5,7 +5,7 @@ export class MenuService {
   private menu: Item[] = [];
 
   addItem(type: string, name: string, price: number) {
-    const item = ItemFactory.criarItem(type, name, price);
+    const item = ItemFactory.createItem(type, name, price);
     this.menu.push(item);
     console.log(`Item adicionado ao cardápio: ${item.getDetails()}`);
   }
