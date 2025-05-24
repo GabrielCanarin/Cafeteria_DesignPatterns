@@ -68,7 +68,7 @@ O sistema simula um ambiente de lanchonete ou restaurante com funcionalidades ta
 
 Uma forma simples de criar combos encadeando métodos em sequência.
 
-##### Como usar
+#### Como usar
 
 ```typescript
 comboService
@@ -78,7 +78,7 @@ comboService
   .build();
 ```
 
-- **Métodos**:
+**Métodos**:
 
 - `createCombo(nome)` - inicia um novo combo
 - `withItem(nome)` - adiciona um item
@@ -86,7 +86,7 @@ comboService
 - `withDiscount(%)` - define desconto (0-100%)
 - `build()` - finaliza e cria o combo
 
-- **Exemplos**
+**Exemplos**
 
 Combo simples
 ```typescript
@@ -107,7 +107,7 @@ const combo2 = comboService
   .build();
 ```
 
-- **Regras**
+**Regras**
 
 - Todo combo precisa ter pelo menos 1 item
 - Desconto deve estar entre 0% e 100%
