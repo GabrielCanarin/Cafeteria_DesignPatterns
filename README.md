@@ -61,3 +61,55 @@ O sistema simula um ambiente de lanchonete ou restaurante com funcionalidades ta
     ```bash
    npm run dev
    ```
+
+### 🔧 Funcionalidades adicionada:
+
+#### Interface Fluente de Combos
+
+Uma forma simples de criar combos encadeando métodos em sequência.
+
+##### Como usar
+
+```typescript
+comboService
+  .createCombo("Nome")
+  .withItem("Item")
+  .withDiscount(10)
+  .build();
+```
+
+- **Métodos**:
+
+- `createCombo(nome)` - inicia um novo combo
+- `withItem(nome)` - adiciona um item
+- `withItems([nomes])` - adiciona vários itens
+- `withDiscount(%)` - define desconto (0-100%)
+- `build()` - finaliza e cria o combo
+
+- **Exemplos**
+
+Combo simples
+```typescript
+const combo1 = comboService
+  .createCombo("Café da Manhã")
+  .withItem("Café")
+  .withItem("Croissant")
+  .withDiscount(15)
+  .build();
+```
+
+Combo com vários itens
+```typescript
+const combo2 = comboService
+  .createCombo("Lanche da Tarde")
+  .withItems(["Refrigerante", "Coxinha", "Docinho"])
+  .withDiscount(10)
+  .build();
+```
+
+- **Regras**
+
+- Todo combo precisa ter pelo menos 1 item
+- Desconto deve estar entre 0% e 100%
+- Itens devem existir no menu
+- Use `build()` no final para criar o combo
