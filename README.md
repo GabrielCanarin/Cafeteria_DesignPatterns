@@ -61,6 +61,7 @@ O sistema simula um ambiente de lanchonete ou restaurante com funcionalidades ta
     ```bash
    npm run dev
    ```
+---
 
 ### 🔧 Funcionalidades adicionada:
 
