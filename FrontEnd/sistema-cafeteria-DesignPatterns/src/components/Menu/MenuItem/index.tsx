@@ -16,6 +16,7 @@ export const MenuItem = ({ item, onSelect, isChecked }: MenuItemProps) => {
     <div className={styles.menuItem_Container}>
       <div className={styles.menuItem_selectItem}>
         <input
+          id={item.name}
           type="checkbox"
           checked={isChecked}
           onChange={handleCheckboxChange}
