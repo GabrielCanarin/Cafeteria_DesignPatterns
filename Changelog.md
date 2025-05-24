@@ -151,13 +151,6 @@ const getOrderTotal = () => {
 | `ComboBuilder.ts`   | Implementado builder com interface fluente para construção expressiva de combos.    |
 | `ComboService.ts`   | Criado serviço para gerenciamento e registro de combos promocionais.               |
 
-## Principais Recursos Implementados
-
-- Interface Fluente para criação expressiva de combos
-- Cálculo automático de preço com desconto
-- Validação de itens existentes e valores de desconto
-- Suporte a criação de combos promocionais predefinidos
-
 ## Exemplo de Uso
 
 ```ts
