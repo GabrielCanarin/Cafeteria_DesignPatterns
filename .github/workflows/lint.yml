@@ -1,0 +1,29 @@
+name: Run ESLint After Tests
+
+on:
+  workflow_run:
+    workflows: ["Run Playwright Tests on Push"]
+    types:
+      - completed
+
+jobs:
+  lint:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        run: npm run lint
