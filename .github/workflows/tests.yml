@@ -25,7 +25,7 @@ jobs:
         working-directory: BackEnd
         run: npm install
 
-      - name: Dar permissão ao ts-node
+      - name: ts-node permission
         working-directory: BackEnd
         run: chmod +x ./node_modules/.bin/ts-node
 
