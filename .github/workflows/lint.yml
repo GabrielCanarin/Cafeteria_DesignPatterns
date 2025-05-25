@@ -21,9 +21,9 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npm ci
 
       - name: Run ESLint
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npm run lint

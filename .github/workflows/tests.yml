@@ -22,33 +22,33 @@ jobs:
           node-version: 18
 
       - name: Install backend dependencies
-        working-directory: backend
+        working-directory: BackEnd
         run: npm install
 
       - name: Start backend
-        working-directory: backend
+        working-directory: BackEnd
         run: |
           npm start &
           sleep 10  # dá tempo do backend subir
 
       - name: Install frontend dependencies
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npm install
 
       - name: Build frontend
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npm run build
-      
+
       - name: Start frontend in production mode
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: |
           npm run preview &
           sleep 5  # dá um tempo pro servidor subir
-      
+
       - name: Install Playwright Browsers
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npx playwright install
-      
+
       - name: Run Playwright tests
-        working-directory: frontend/sistema-cafeteria-DesignPatterns
+        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npx playwright test
