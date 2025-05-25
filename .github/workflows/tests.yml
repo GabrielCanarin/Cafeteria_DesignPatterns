@@ -28,8 +28,8 @@ jobs:
       - name: Start backend
         working-directory: BackEnd
         run: |
-          npm start &
-          sleep 10  # dá tempo do backend subir
+            npx ts-node --project tsconfig.json src/index.ts &
+            sleep 10
 
       - name: Install frontend dependencies
         working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
