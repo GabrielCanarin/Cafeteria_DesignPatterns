@@ -167,19 +167,23 @@ comboService.registerCombo(cafeDaManha);
 
 # **Testes E2E Realizados no FrontEnd Utilizando Playwright**
 
-## Para rodar os Testes, entre na Pasta FrontEnd/sistema-cafeteria-DesignPatterns e rode o comando:
+## Para rodar os Testes, entre na Pasta FrontEnd/sistema-cafeteria-DesignPatterns e rode os comandos:
+
+```ts
+npm run build
+```
 
 ```ts
 npx playwright test
 ```
 
-## Teste 1 - Deve ir para a tela de pagamento após adicionar um item
+### Teste 1 - Deve ir para a tela de pagamento após adicionar um item
 
-## Teste 2 - Deve marcar e desmarcar um checkbox de produto
+### Teste 2 - Deve marcar e desmarcar um checkbox de produto
 
-## Teste 3 - Deve realizar um pagamento via PIX
+### Teste 3 - Deve realizar um pagamento via PIX
 
-## Teste 4 - Deve descartar um pedido
+### Teste 4 - Deve descartar um pedido
 
 
 
