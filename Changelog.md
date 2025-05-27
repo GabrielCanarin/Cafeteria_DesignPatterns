@@ -185,6 +185,8 @@ npx playwright test
 
 ### Teste 4 - Deve descartar um pedido
 
+### Teste 5 - Deve comprar um Pastel, um sorvete e uma água via cartão de crédito
+
 
 
 
