@@ -43,12 +43,6 @@ jobs:
         working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npm run build
 
-      - name: Start frontend in production mode
-        working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
-        run: |
-          npm run preview &
-          sleep 5  # dá um tempo pro servidor subir
-
       - name: Install Playwright Browsers
         working-directory: FrontEnd/sistema-cafeteria-DesignPatterns
         run: npx playwright install

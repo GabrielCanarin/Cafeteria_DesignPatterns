@@ -5,8 +5,13 @@ export default defineConfig({
   fullyParallel: true,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:5173",
+    baseURL: "http://localhost:4173", // ⚠️ preview do Vite usa 4173 por padrão
     trace: "on-first-retry",
+  },
+  webServer: {
+    command: "npm run preview -- --host", // garante que escute em 0.0.0.0
+    port: 4173,
+    timeout: 30000,
   },
   projects: [
     {
@@ -14,11 +19,4 @@ export default defineConfig({
       use: { ...devices["Desktop Edge"], channel: "msedge" },
     },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });

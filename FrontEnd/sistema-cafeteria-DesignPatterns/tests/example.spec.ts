@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test("deve ir para a tela de pagamento após adicionar item", async ({
   page,
 }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("http://localhost:4173/");
 
   const checkbox = page.locator('input[type="checkbox"]').first();
   await checkbox.check();
@@ -17,7 +17,7 @@ test("deve ir para a tela de pagamento após adicionar item", async ({
 });
 
 test("deve marcar e desmarcar um checkbox de produto", async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("http://localhost:4173/");
 
   const checkbox = page.locator('input[type="checkbox"]').first();
 
@@ -29,7 +29,7 @@ test("deve marcar e desmarcar um checkbox de produto", async ({ page }) => {
 });
 
 test("deve realizar um pagamento via PIX", async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("http://localhost:4173/");
 
   const checkbox = page.locator('input[type="checkbox"]').first();
 
@@ -52,7 +52,7 @@ test("deve realizar um pagamento via PIX", async ({ page }) => {
 });
 
 test("deve descartar um pedido", async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("http://localhost:4173/");
 
   const checkbox = page.locator('input[type="checkbox"]').first();
 
@@ -70,7 +70,7 @@ test("deve descartar um pedido", async ({ page }) => {
 test("deve comprar um Pastel, um sorvete e uma água via cartão de crédito", async ({
   page,
 }) => {
-  await page.goto("http://localhost:5173/");
+  await page.goto("http://localhost:4173/");
   const checkboxPastel = page.locator('input[type="checkbox"]#Pastel');
   const checkboxSorvete = page.locator('input[type="checkbox"]#Sorvete');
   const checkboxAgua = page.locator('input[type="checkbox"]#Água');
